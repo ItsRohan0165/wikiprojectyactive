@@ -9,6 +9,7 @@ import time
 import wikipedia
 from bs4 import BeautifulSoup
 from googletrans import Translator
+import os
 
 import discord
 
