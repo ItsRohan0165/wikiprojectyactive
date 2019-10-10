@@ -247,7 +247,7 @@ async def on_message(message):
                 await channel.send(wikipg.url)
             except:
                 channel = message.channel
-               await channel.send('Emmmm....Something wrong')
+                await channel.send('Emmmm....Something wrong')
         else:
             channel = message.channel
             await channel.send('404 Not Found!')
