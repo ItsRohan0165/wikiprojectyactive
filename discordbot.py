@@ -220,9 +220,11 @@ async def on_message(message):
         await client.send_message(message.channel, "http://www.youtube.com/watch?v=" + search_results[0])
     
     elif message.content.startswith('/wiki'):
-        await client.send_message(message.channel,'<@'+str(message.author.id)+'>')
+        channel = message.channel
+        await channel.send('<@'+str(message.author.id)+'>')
         if message.content=='/wiki':
-            await client.send_message(message.channel,'Emmmm... No parameter found.')
+            channel = message.channel
+            await channel.send('Emmmm... No parameter found.')
             return
         wikipedia.set_lang("en")
         contentstr=message.content[6:]
@@ -233,18 +235,22 @@ async def on_message(message):
                 dirpayload+=line+'\n'
             em=discord.Embed(title='Wiki Search Result:',description=dirpayload,colour=0xDEADBF)
             try:
-                await client.send_message(message.channel,embed=em)
+                channel = message.channel
+                await channel.send(embed=em)
             except:
-                await client.send_message(message.channel,'Out of Buffer! Change the search string.')
+                channel = message.channel
+                await channel.send('Out of Buffer! Change the search string.')
             
             try:
                 wikipg=wikipedia.page(contentstr)
-                await client.send_message(message.channel,wikipg.title)
-                await client.send_message(message.channel,wikipg.url)
+                await channel.send(wikipg.title)
+                await channel.send(wikipg.url)
             except:
-                await client.send_message(message.channel,'Emmmm....Something wrong')
+                channel = message.channel
+               await channel.send('Emmmm....Something wrong')
         else:
-            await client.send_message(message.channel,'404 Not Found!')
+            channel = message.channel
+            await channel.send('404 Not Found!')
         
 
     elif message.content.startswith('---help'):
