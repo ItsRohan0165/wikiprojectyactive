@@ -385,8 +385,9 @@ async def on_message(message):
                      await client.send_message(message.channel,'Maybe too many description?')
                      await client.send_message(message.channel,url)
                  
-    elif message.content.startswith('!'):
-        await client.send_message(message.channel,'What are you doing?')
+    elif message.content.startswith('/'):
+        channel = message.channel
+        await channel.send('What are you doing?')
 
 
 client.run(os.getenv('token'))
