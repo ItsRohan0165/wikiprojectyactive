@@ -385,7 +385,7 @@ async def on_message(message):
                      await client.send_message(message.channel,'Maybe too many description?')
                      await client.send_message(message.channel,url)
                  
-    elif message.content.startswith('!'):
+    elif message.content.startswith('-----p'):
         channel = message.channel
         await channel.send('What are you doing?')
 
